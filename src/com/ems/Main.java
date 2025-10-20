@@ -1,10 +1,17 @@
 package com.ems;
 
+import java.util.List;
+
 public class Main {
 	public static void main(String args[]) {
-		FullTimeEmployee e1 = new FullTimeEmployee("Prince", "IT", 10);
-		e1.displayInfo();
-		PartTimeEmployee e2 = new PartTimeEmployee("ABC", "IT", 20000, 8);
-		e2.displayInfo();
+			EmployeeManager manager = new EmployeeManager();
+			Employee e1 = manager.getAllEmployees().get(0);
+			e1.setDepartment("Analytics");
+			manager.updateEmployee(e1);
+			e1.displayInfo();
+//	        List<Employee> employees = manager.getAllEmployees();
+//	        for (Employee e : employees) {
+//	            e.displayInfo();
+//	        }      
+	}  
 	}
-}
