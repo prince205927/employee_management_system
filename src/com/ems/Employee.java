@@ -1,6 +1,6 @@
 package com.ems;
 
-public class Employee {
+public class Employee implements SalaryCalculable {
 	private int id;
 	private String name;
 	private String department;
@@ -44,6 +44,10 @@ public class Employee {
 		this.salary = salary;
 	}
 	
+	@Override
+	public double calculateSalary() {
+		return salary;
+	}
 	public void displayInfo() {
 		System.out.println("ID: "+id+ "|" +"Name: "+ name+ "|" + "Department: "+ department+ "|" +  "Salary: " + salary+ "|");
 	}

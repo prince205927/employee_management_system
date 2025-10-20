@@ -13,4 +13,10 @@ public class PartTimeEmployee extends Employee {
 		System.out.println("I am a part time employee and I have worked for" + hoursWorked + "hours");
 		super.displayInfo();
 	}
+	
+	@Override
+	public double calculateSalary() {
+		return getSalary()+ (hoursWorked*100);
+	}
+	
 }
