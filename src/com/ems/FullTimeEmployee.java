@@ -10,4 +10,9 @@ public class FullTimeEmployee extends Employee {
 		System.out.println("I am a full time employee");
 		super.displayInfo();
 	}
+	
+	@Override
+	public double calculateSalary() {
+		return getSalary() + 5000;
+	}
 }
