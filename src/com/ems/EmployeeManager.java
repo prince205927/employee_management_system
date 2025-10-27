@@ -11,7 +11,7 @@ public class EmployeeManager {
             pstmt.setString(2, emp.getDepartment());
             pstmt.setDouble(3, emp.getSalary());
             pstmt.executeUpdate();
-            System.out.println("Employee added!");
+            System.out.println("Employee added!\n\n");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -36,6 +36,33 @@ public class EmployeeManager {
         return employees;
     }
 	
+	public Employee getEmployeeById(int id) {
+	    String query = "SELECT * FROM employees WHERE id = ?";
+	    Employee employee = null;
+
+	    try (Connection conn = DatabaseHelper.connect();
+	         PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+	        pstmt.setInt(1, id);
+	        ResultSet rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            String name = rs.getString("name");
+	            String department = rs.getString("department");
+	            double salary = rs.getDouble("salary");
+
+	            employee = new FullTimeEmployee(name, department, salary);
+	            employee.setId(id);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return employee;
+	}
+
+	
 	public void updateEmployee(Employee emp) {
 	    String sql = "UPDATE employees SET name = ?, department = ?, salary = ? WHERE id = ?";
 	    try (Connection conn = DatabaseHelper.connect();
@@ -46,9 +73,9 @@ public class EmployeeManager {
 	        pstmt.setInt(4, emp.getId());
 	        int rows = pstmt.executeUpdate();
 	        if (rows > 0)
-	            System.out.println("Employee updated successfully!");
+	            System.out.println("Employee updated successfully!\n\n");
 	        else
-	            System.out.println("Employee not found!");
+	            System.out.println("Employee not found!\n");
 	    } catch (SQLException e) {
 	        System.out.println("Update failed: " + e.getMessage());
 	    }
@@ -61,9 +88,9 @@ public class EmployeeManager {
 	        pstmt.setInt(1, id);
 	        int rows = pstmt.executeUpdate();
 	        if (rows > 0)
-	            System.out.println("Employee deleted successfully!");
+	            System.out.println("Employee deleted successfully!\n\n");
 	        else
-	            System.out.println("Employee not found!");
+	            System.out.println("Employee not found!\n\n");
 	    } catch (SQLException e) {
 	        System.out.println("Delete failed: " + e.getMessage());
 	    }
