@@ -5,7 +5,6 @@ public class Employee implements SalaryCalculable {
 	private String name;
 	private String department;
 	private double salary;
-	
 	public Employee(String name, String department, double salary) {
 		this.name=name; 
 		this.department = department;
@@ -49,7 +48,7 @@ public class Employee implements SalaryCalculable {
 		return salary;
 	}
 	public void displayInfo() {
-		System.out.println("ID: "+id+ "|" +"Name: "+ name+ "|" + "Department: "+ department+ "|" +  "Salary: " + salary+ "|");
+		System.out.println("ID: "+id+ "|" +"Name: "+ name+ "|" + "Department: "+ department+ "|" +  "Salary: " + salary+ "|\n\n");
 	}
 	
 }

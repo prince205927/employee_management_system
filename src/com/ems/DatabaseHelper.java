@@ -8,7 +8,7 @@ public class DatabaseHelper {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(URL);
-            System.out.println("Connected to SQLite.");
+            System.out.println("Connected to SQLite.\n");
         } catch (SQLException e) {
             System.out.println("Connection failed: " + e.getMessage());
         }
@@ -30,3 +30,4 @@ public class DatabaseHelper {
         }
     }
 }
+
